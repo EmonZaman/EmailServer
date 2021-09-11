@@ -1,4 +1,7 @@
+from django.contrib.auth import authenticate, login
+from django.http import HttpRequest
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from accounts.models import User
 
@@ -25,3 +28,6 @@ class UserSerailizers(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+
+

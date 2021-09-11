@@ -2,7 +2,7 @@ from django.http import Http404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from django.db.models import Q
 
 from Email.api.serializers import MailSerailizers
 from Email.models import Mail
@@ -54,3 +54,36 @@ class MailDetail(APIView):
         snippet = self.get_object(pk)
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class DraftView(APIView):
+
+    def get(self, request, format=None):
+
+        mail = Mail.objects.filter(sent=False)
+        serializer = MailSerailizers(mail, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = MailSerailizers(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# class UserEmailListView(APIView):
+#
+#     def get(self, request, format=None):
+#         mail = Mail.objects.filter(Q(sender_user__id=request.user.id)| Q(receiver__id=request.user.id))
+#         print(request.user.email)
+#         serializer = MailSerailizers(mail, many=True)
+#         return Response(serializer.data)
+#
+#     def post(self, request, format=None):
+#         serializer = MailSerailizers(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

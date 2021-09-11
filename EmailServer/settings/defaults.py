@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'rest_framework',
     'rest_framework.authtoken',
+    'dj_rest_auth',
     # my apps
     'accounts',
     'core',
@@ -185,7 +186,7 @@ REST_FRAMEWORK = {
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
     'DEFAULT_FILTER_BACKENDS': [
         'rest_framework.filters.SearchFilter',
-        'core.api.filters.OrderingFilter',
+        # 'core.api.filters.OrderingFilter',
         'django_filters.rest_framework.DjangoFilterBackend',
     ]
 }
