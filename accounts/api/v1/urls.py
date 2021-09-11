@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import Demo
+from .views import  UserView
+
 app_name = "accounts-api-v1"
 
 urlpatterns = [
-    path('demo/',Demo.as_view(),name="Demo"),
+    path('demo/',UserView.as_view(),name="Demo"),
 ]
