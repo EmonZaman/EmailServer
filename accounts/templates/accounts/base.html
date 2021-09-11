@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Base</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'accounts/base.css' %}"/>
+
+</head>
+<body class="p-3 mb-2 bg-warning text-dark h-100" style="background: #76D7C4;" >
+<div>
+    <nav class="navbar navbar-default navbar-static-top"style="background:#17202A; color:red;">
+        <div class="container">
+            <ul class="nav navbar-nav">
+
+
+                <li><a class="navbar-brand" href="">Gmail</a></li>
+                   <li><a class="navbar-brand" href="">Compose</a></li>
+                <li><a class="navbar-link" href="">Inbox</a></li>
+                <li><a class="navbar-link" href="">Sent </a></li>
+                {% if user.is_authenticated %}
+
+
+                 <li><a href="">Register</a></li>
+                <li><a class="navbar-link" href="">Login</a></li>
+                  <li><a href="">Aagontukt</a></li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        {% block body_block %}
+        {% endblock %}
+    </div>
+</div>
+
+
+{% block extra_scripts %}
+
+{% endblock %}
+
+</body>
+</html>
