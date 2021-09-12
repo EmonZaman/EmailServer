@@ -22,9 +22,7 @@ from EmailServer.settings import env, STATIC_URL, MEDIA_URL, STATIC_ROOT, MEDIA_
 api_url_patterns = (
     [
         path('accounts/v1/', include('accounts.api.v1.urls')),
-        path('email/', include('Email.api.urls')),
-
-
+        path('email/v1/', include('Email.api.v1.urls')),
 
     ], 'api'
 )

@@ -8,7 +8,7 @@ from accounts.api.v1.serializers import UserSerailizers
 from accounts.models import User
 
 
-# ./manage.py drf_create_token admin
+
 class UserView(APIView):
 
     def get(self, request, format=None):

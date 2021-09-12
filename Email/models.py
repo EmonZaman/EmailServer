@@ -20,9 +20,19 @@ class Mail(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
 
+    def save(self, *args, **kwargs):
+        try:
+            self.receiver=User.objects.get(email=self.sending_to)
+            super(Mail, self).save(*args, **kwargs)
+        except User.DoesNotExist as e:
+            print(e)
+
+
+
     class Meta:
         verbose_name = "Email"
         verbose_name_plural = "Emails"
 
     def __str__(self):
         return f"{self.sender_user}-{self.receiver}-{self.subject}"
+

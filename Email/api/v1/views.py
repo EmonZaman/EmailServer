@@ -5,11 +5,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.db.models import Q
 
-from Email.api.serializers import MailSerailizers
+from Email.api.v1.serializers import MailSerailizers
 from Email.models import Mail
 
 
-# ./manage.py drf_create_token admin
 class MailView(APIView):
 
     def get(self, request, format=None):
