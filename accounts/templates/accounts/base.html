@@ -10,23 +10,23 @@
     <link rel="stylesheet" href="{% static 'accounts/base.css' %}"/>
 
 </head>
-<body class="p-3 mb-2 bg-warning text-dark h-100" style="background: #76D7C4;" >
+<body class="p-3 mb-2 bg-warning text-dark h-100" style="background: #76D7C4;">
 <div>
-    <nav class="navbar navbar-default navbar-static-top"style="background:#17202A; color:red;">
+    <nav class="navbar navbar-default navbar-static-top" style="background:#17202A; color:red;">
         <div class="container">
             <ul class="nav navbar-nav">
 
-
-                <li><a class="navbar-brand" href="">Gmail</a></li>
-                   <li><a class="navbar-brand" href="">Compose</a></li>
+                {% if user.is_authenticated %}
+                <li><a class="navbar-brand" href="">LIImail</a></li>
+                <li><a class="navbar-brand" href="">Compose</a></li>
                 <li><a class="navbar-link" href="">Inbox</a></li>
                 <li><a class="navbar-link" href="">Sent </a></li>
-                {% if user.is_authenticated %}
+                <li><a href="">{{user.username }}</a></li>
 
-
-                 <li><a href="">Register</a></li>
+                {% else %}
+                <li><a href="">Register</a></li>
                 <li><a class="navbar-link" href="">Login</a></li>
-                  <li><a href="">Aagontukt</a></li>
+
 
                 {% endif %}
             </ul>
@@ -42,6 +42,7 @@
 {% block extra_scripts %}
 
 {% endblock %}
+
 
 </body>
 </html>
