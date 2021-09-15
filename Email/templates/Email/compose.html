@@ -1,0 +1,58 @@
+
+{% extends 'accounts/base.html' %}
+
+{% block body_block %}
+<div class="container" style="width:60%; margin-top:15%;">
+    <div class="jumbotron">
+
+        <div class="card-header text-center">
+            <p class="text-muted" style="background:#F7F7F7">Send Your Mail</p>
+        </div>
+
+        <div>
+
+
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                <div style="padding-bottom:2.5%">
+                    <label for="id_sending_to" class=" requiredField">
+
+
+                        sending to<span class="asteriskField">*</span> </label>
+                    <input type="email" name="email" maxlength="150" autofocus=""
+                           class="textinput textInput form-control is-invalid" required="" id="id_sending_to">
+                </div>
+                <div style="padding-bottom:2.5%">
+
+
+                    <label for="id_subject" class=" requiredField">
+                        subject<span class="asteriskField">*</span> </label>
+                    <input type="subject" name="subject" maxlength="150" autofocus=""
+                           class="textinput textInput form-control is-invalid" required="" id="id_subject">
+
+                </div>
+
+                 <div style="padding-bottom:2.5%">
+
+
+                    <label for="id_message" class=" requiredField">
+                        message<span class="asteriskField">*</span> </label>
+                    <input type="message" name="message" maxlength="150" autofocus=""
+                           class="textinput textInput form-control is-invalid" required="" id="id_message">
+
+                </div>
+                <div style="padding-top:3%">
+                    <input type="submit" name="save" value="Sent" class="btn btn-primary btn-block mt-5"
+                           id="submit-id-save">
+                </div>
+            </form>
+            <hr>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

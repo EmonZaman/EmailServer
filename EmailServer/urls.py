@@ -29,6 +29,7 @@ api_url_patterns = (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('accounts.urls')),
+    path('email/',include('Email.urls')),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path('api_auth/', include('rest_framework.urls')),
 
