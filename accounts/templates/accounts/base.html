@@ -23,15 +23,17 @@
             <ul class="nav navbar-nav">
 
                 {% if user.is_authenticated %}
-                <li><a class="navbar-brand" href="">LIImail</a></li>
-                <li><a class="navbar-brand" href="">Compose</a></li>
-                <li><a class="navbar-link" href="">Inbox</a></li>
-                <li><a class="navbar-link" href="">Sent </a></li>
+                <li><a class="navbar-brand" href="">LiiChimp</a></li>
+                <li><a class="navbar-brand" href="{% url 'Email:compose' %}">Compose</a></li>
+                <li><a class="navbar-link" href="{% url 'Email:inbox' %}">Inbox</a></li>
+                <li><a class="navbar-link" href="{% url 'Email:sent' %}">Sent </a></li>
+                <li><a class="navbar-link" href="">Draft </a></li>
+                 <li><a class="navbar-link" href="{% url 'accounts:logout' %}">LogOut</a></li>
                 <li><a href="">{{user.username }}</a></li>
 
                 {% else %}
-                <li><a href="">Register</a></li>
-                <li><a class="navbar-link" href="">Login</a></li>
+                <li><a href="{% url 'accounts:register' %}">Register</a></li>
+                <li><a class="navbar-link" href="{% url 'accounts:login' %}">Login</a></li>
 
 
                 {% endif %}

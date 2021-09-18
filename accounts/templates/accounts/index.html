@@ -1,0 +1,20 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="container" style="width:50%; margin-top:22%;" >
+  <div class="jumbotron">
+        {% if request.user.is_authenticated %}
+        <p>Welcome {{ user.username }} !!!</p>
+         {% endif %}
+
+        <h2>Welcome to LiiChimp</h2>
+
+
+
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.db.models import Q
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.views import View
 from django.views.generic import TemplateView
-
+from django.views.generic.list import ListView
 import Email
 from Email.models import Mail
+from accounts.models import User
 
 
 class ComposeView(View):
@@ -17,22 +19,41 @@ class ComposeView(View):
 
     def post(self, request):
         print(request.POST)
-        sending_mail = request.POST.get('email')
+        sender_user=request.user
+        sending_mail = request.POST.get('email1')
         subject= request.POST.get('subject')
         message = request.POST.get('message')
 
-        print(sending_mail,subject,message)
-        # u = User()
-        # u.objects.get(username=username)
-        # u.objects.get(email=email)
-        # u.objects.get(password=password)
-        u = Mail.objects.get(sending_to=sending_mail, subject=subject, message=message)
+
+        print(sending_mail,subject,message,sender_user)
+
+        u = Mail()
+        u.sender_user=sender_user
+        u.sending_to=sending_mail
+        u.subject=subject
+        u.message=message
 
         u.save()
         # login(request, u)
-        return render(request, self.template_index)
+        return redirect('Email:inbox')
 
     # model = User
     # form_class = UserForm
     # template_name = "accounts/registration.html"
+
+
+class Inbox(ListView):
+    template_name = "Email/inbox.html"
+    context_object_name= "Mails"
+
+    def get_queryset(self):
+        return Mail.objects.filter(Q(receiver__id=self.request.user.id) | Q(sender_user__id=self.request.user.id))
+class Sent(ListView):
+    template_name = "Email/sentitems.html"
+    context_object_name= "Mails"
+
+    def get_queryset(self):
+        return Mail.objects.filter(Q(sender_user__id=self.request.user.id))
+
+
 

@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'accounts/base.html' %}
 
-</body>
-</html>
+{% block body_block %}
+
+
+<div class="container" style="width:50%; margin-top:22%;">
+    <div class="jumbotron">
+
+
+        {% for inbox in Mails %}
+        <h2>sent items detials</h2>
+         <p>{{ inbox.sender_user.username}} </p>
+           <p>{{ inbox.sender_user.email}} </p>
+         <p>{{ inbox.subject}} </p>
+         <p>{{ inbox.message}} </p>
+         <p>{{ inbox.receiver.username}} </p>
+         <p>{{ inbox.receiver.email}} </p>
+        <p>{{ inbox.created_date}} </p>
+
+
+
+        {% endfor %}
+
+
+
+    </div>
+
+</div>
+
+
+{% endblock %}
