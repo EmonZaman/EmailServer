@@ -1,0 +1,100 @@
+.textColor{
+
+    color: red;
+}
+.navbar-default .navbar-nav>li>a:hover,.navbar-default .navbar-nav>li>a:active, .navbar-default .navbar-nav>li>a:focus{
+background-color:red;
+color:white;
+}
+
+.new{
+padding-left: 25%;
+background:#4E5251;
+text:white;
+ display : flex ;
+ justify-content : center ;
+
+
+}
+input[type=text], select, textarea {
+  width: 50%;
+  padding: 12px;
+ 
+  border-radius: 1px;
+  resize: vertical;
+ 
+  border-color: coral;
+  border-style:none;
+
+}
+
+
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+  border-width:5px;
+    border-style:none;
+
+}
+
+.container1 {
+  border-radius: 0px;
+  background-color: white;
+  padding: 3rem;;
+  width : 60%;
+}
+
+.col-25 {
+  float: left;
+
+  margin-top: 6px;
+  border-style: none;
+}
+
+.col-75 {
+  float: left;
+  width: 100%;
+  border-style: none;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.head-title{
+    padding : 1rem;
+    background : grey;
+    margin-left : -1rem ;
+    color : white ;
+    font-weight : bold ;
+
+}
+
+.main-container{
+    display : flex ;
+    justify-content : center ;
+
+}
+
+.input-box {
+
+         width : 100% !important ;
+}
+
+.container4{
+      background-color: white;
+
+}

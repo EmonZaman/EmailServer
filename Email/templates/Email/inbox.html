@@ -3,20 +3,28 @@
 {% block body_block %}
 
 
-<div class="container" style="width:50%; margin-top:22%;">
-    <div class="jumbotron">
+<h2>Inbox</h2>
+{% for inbox in Mails %}
 
 
-        {% for inbox in Mails %}
-      <p>{{ inbox.sending_to }} </p>
-
-        {% endfor %}
-
+    <!--         <p>sender username: {{ inbox.sender_user.username}} </p>-->
+    <!--    <p>sender mail: {{ inbox.sender_user.email}} </p>-->
+    <!--    <p>subeject: {{ inbox.subject}} </p>-->
+    <!--    <p>message: {{ inbox.message}} </p>-->
+    <!--    &lt;!&ndash;         <p>{{ inbox.receiver.username}} </p>&ndash;&gt;-->
+    <!--    <p>receiver mail: {{ inbox.receiver.email}} </p>-->
+    <!--    <p>{{ inbox.created_date}} </p>-->
+     <div  class="container4">
+     <div class="row">
+      <div class="col s4">{{ inbox.sender_user.username}}</div>
+      <div class="col s4">{{ inbox.subject}}</div>
+      <div class="col s4">{{ inbox.message}}</div>
 
 
     </div>
+     </div>
 
-</div>
+{% endfor %}
 
 
 {% endblock %}

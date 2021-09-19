@@ -20,7 +20,7 @@ class ComposeView(View):
     def post(self, request):
         print(request.POST)
         sender_user=request.user
-        sending_mail = request.POST.get('email1')
+        sending_mail = request.POST.get('email')
         subject= request.POST.get('subject')
         message = request.POST.get('message')
 

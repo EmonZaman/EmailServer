@@ -32,6 +32,7 @@ class Mail(models.Model):
     class Meta:
         verbose_name = "Email"
         verbose_name_plural = "Emails"
+        ordering = ['-id']
 
     def __str__(self):
         return f"{self.sender_user}-{self.receiver}-{self.subject}"

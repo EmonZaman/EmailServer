@@ -1,68 +1,103 @@
 {% extends 'accounts/base.html' %}
-
+{% load static %}
 {% block body_block %}
-<div class="container" style="width:60%; margin-top:15%;">
-    <div class="jumbotron">
+<div class="main-container">
+<div class="container1">
 
-        <div class="card-header text-center">
-            <p class="text-muted" style="background:#F7F7F7">Send Your Mail</p>
+
+    <div>
+
+        <div class="head-title">
+            <span>New Message</span>
         </div>
+        <br>
 
-        <div>
+
+        <form enctype="multipart/form-data" method="POST">
+
+            {% csrf_token %}
+            <!--                <div>-->
+            <!--                    Sending From:-->
+            <!--                </div>-->
+            <!--                <div>-->
+            <!--                    {{ request.user.email}}-->
+            <!--                </div>-->
+
+            <!--                <div style="padding-bottom:2.5%">-->
+            <!--                    <label for="sending_to" class=" requiredField">-->
 
 
-            <form enctype="multipart/form-data" method="POST">
+            <!--                        <span class="asteriskField"></span> </label>-->
+            <!--                    <input type="email" name="email1" maxlength="150" autofocus=""-->
+            <!--                           class="textinput textInput form-control is-invalid" required="" id="sending_to"-->
+            <!--                           placeholder="Sending to"-->
+            <!--                    >-->
+            <!--                </div>-->
+            <!--                <div style="padding-bottom:2.5%">-->
 
-                {% csrf_token %}
-                <div>
-                     Sending From:
+
+            <!--                    <label for="subject" class=" requiredField">-->
+            <!--                        <span class="asteriskField"></span> </label>-->
+            <!--                    <input type="text" name="subject" maxlength="150" autofocus=""-->
+            <!--                           class="textinput textInput form-control is-invalid" required="" id="subject"-->
+            <!--                           placeholder="Subject">-->
+
+            <!--                </div>-->
+
+            <!--                <div style="padding-bottom:2.5% ">-->
+
+
+            <!--                    &lt;!&ndash;                    <label for="message" class=" requiredField">&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                        <span class="asteriskField"></span> </label>&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                    <input type="text" name="message" autofocus=""&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                           class="textinput textInput form-control is-invalid" required="" id="message"&ndash;&gt;-->
+            <!--                    &lt;!&ndash;                           placeholder="Message">&ndash;&gt;-->
+            <!--&lt;!&ndash;                    <textarea rows="5" cols="50" name="message">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;Enter text here...</textarea>&ndash;&gt;-->
+
+
+            <div class="row">
+                <div class="col-25">
+
                 </div>
-                 <div>
-                       {{ request.user.email}}
-                 </div>
-
-                <div style="padding-bottom:2.5%">
-                    <label for="sending_to" class=" requiredField">
-
-
-                        <span class="asteriskField"></span> </label>
-                    <input type="email" name="email1" maxlength="150" autofocus=""
-                           class="textinput textInput form-control is-invalid" required="" id="sending_to"
-                           placeholder="Sending to"
-                    >
+                <div class="col-75">
+                    <input class="input-box" type="text" id="fname" name="email" placeholder="To">
                 </div>
-                <div style="padding-bottom:2.5%">
-
-
-                    <label for="subject" class=" requiredField">
-                        <span class="asteriskField"></span> </label>
-                    <input type="text" name="subject" maxlength="150" autofocus=""
-                           class="textinput textInput form-control is-invalid" required="" id="subject"
-                           placeholder="Subject">
+            </div>
+            <div class="row">
+                <div class="col-25">
 
                 </div>
+                <div class="col-75">
+                    <input class="input-box" type="text" id="lname" name="subject" placeholder="Subject">
+                </div>
+            </div>
 
-                <div style="padding-bottom:2.5% ">
-
-
-                    <label for="message" class=" requiredField">
-                        <span class="asteriskField"></span> </label>
-                    <input type="text" name="message" maxlength="150" autofocus=""
-                           class="textinput textInput form-control is-invalid" required="" id="message"
-                           placeholder="Message">
+            <div class="row">
+                <div class="col-25">
 
                 </div>
-                <div style="padding-top:3%">
-                    <input type="submit" name="save" value="Sent" class="btn btn-primary btn-block mt-5"
-                           id="submit-id-save">
+                <div class="col-75">
+                                <textarea class="input-box" id="message" name="message" placeholder="type you message..."
+                                          style="height:200px"></textarea>
                 </div>
-            </form>
-            <hr>
+            </div>
+            <div class="row">
+                <input type="submit" value="Sent">
+            </div>
 
 
-        </div>
+<!--            <div style="padding-top:3%">-->
+<!--                <input type="submit" name="save" value="Sent" class="btn btn-primary btn-block mt-5"-->
+<!--                       id="submit-id-save">-->
+<!--            </div>-->
+        </form>
+        <hr>
+
+
     </div>
 </div>
 
-
+</div>
 {% endblock %}
