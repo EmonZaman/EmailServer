@@ -84,8 +84,9 @@ input[type=submit]:hover {
 }
 
 .main-container{
-    display : flex ;
-    justify-content : center ;
+
+    padding-left: 90px;
+    border:1px;
 
 }
 
@@ -94,7 +95,12 @@ input[type=submit]:hover {
          width : 100% !important ;
 }
 
-.container4{
-      background-color: white;
+.linkNoColor{
+color:black;
+text-decoration:none;
 
+}
+.linkNoColor :hover  ,a:hover{
+    color: black !important;
+    text-decoration: none !important;
 }

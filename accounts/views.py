@@ -26,6 +26,9 @@ from accounts.models import User
 class AboutView(TemplateView):
     template_name = "accounts/index.html"
 
+class BaseView(TemplateView):
+    template_name = "accounts/base.html"
+
 
 # noinspection PyMethodMayBeStatic
 class LoginView(View):

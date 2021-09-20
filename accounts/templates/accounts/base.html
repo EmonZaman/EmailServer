@@ -6,63 +6,129 @@
     <meta charset="utf-8">
     <title>Base</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <link rel="stylesheet" href="{% static 'accounts/base.css' %}"/>
-     <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
 
 </head>
-<body class="p-3 mb-2 bg-warning text-dark h-100" style="background: #2C3539;">
+<body>
 
 
+<div class="conainer-fluid">
+    <div class="row">
+        <div class="col-3" style="padding-left:0px !important; padding-right:0px !important;">
 
 
+            <ul id="slide-out" class="sidenav sidenav-fixed">
+                <li>
+                    <div class="user-view">
+                        <div class="background card-panel #424242 #e57373 red lighten-2">
+                            <!--                <div class="card-panel teal lighten-2"></div>-->
+                        </div>
+                        <a href="#user"><img class="circle" src="https://www.w3schools.com/images/w3schools_green.jpg"></a>
+                        <a href="#name"><span class="white-text name">{{user.username}}</span></a>
+                        <a href="#email"><span class="white-text email">{{user.email}}</span></a>
+                    </div>
+                </li>
+                <li><a href="{% url 'Email:compose' %}"><i class="material-icons">email</i>Compose</a></li>
 
-<div>
-    <nav class="navbar navbar-default navbar-static-top" style="background:#17202A; color:red;">
-        <div class="container">
-            <ul class="nav navbar-nav">
+                <li>
+                    <div class="divider"></div>
+                </li>
+                <!--    <li><a class="subheader">Subheader</a></li>-->
+                <li><a href="{% url 'Email:inbox' %}"><i class="material-icons">inbox</i>Inbox</a></li>
+                <li><a href="{% url 'Email:sent' %}"><i class="material-icons">present_to_all
+                </i>Sent</a></li>
 
-                {% if user.is_authenticated %}
-                <li><a class="navbar-brand" href="">LiiChimp</a></li>
-                <li><a class="navbar-brand" href="{% url 'Email:compose' %}">Compose</a></li>
-                <li><a class="navbar-link" href="{% url 'Email:inbox' %}">Inbox</a></li>
-                <li><a class="navbar-link" href="{% url 'Email:sent' %}">Sent </a></li>
-                <li><a class="navbar-link" href="">Draft </a></li>
-                 <li><a class="navbar-link" href="{% url 'accounts:logout' %}">LogOut</a></li>
-                <li><a href="">{{user.username }}</a></li>
+                <li><a href="#!"><i class="material-icons">drafts</i>Draft</a></li>
 
-                {% else %}
-                <li><a href="{% url 'accounts:register' %}">Register</a></li>
-                <li><a class="navbar-link" href="{% url 'accounts:login' %}">Login</a></li>
+                <li><a href="{% url 'accounts:logout' %}"><i class="material-icons">logout</i>Logout</a></li>
 
-
-                {% endif %}
             </ul>
+
         </div>
-    </nav>
-    <div class="container">
-        {% block body_block %}
-        {% endblock %}
+        <div class="col-9"style="padding-left:0px !important; padding-right:0px !important;" >
+
+            {% block body_block %}
+            {% endblock %}
+
+        </div>
+
+
     </div>
+
 </div>
 
 
-{% block extra_scripts %}
+<!--<div>-->
+<!--    <nav class="navbar navbar-default navbar-static-top" style="background:#17202A; color:red;">-->
+<!--        <div class="container">-->
+<!--            <ul class="nav navbar-nav">-->
 
-{% endblock %}
+<!--                {% if user.is_authenticated %}-->
+<!--                <li><a class="navbar-brand" href="">LiiChimp</a></li>-->
+<!--                <li><a class="navbar-brand" href="{% url 'Email:compose' %}">Compose</a></li>-->
+<!--                <li><a class="navbar-link" href="{% url 'Email:inbox' %}">Inbox</a></li>-->
+<!--                <li><a class="navbar-link" href="{% url 'Email:sent' %}">Sent </a></li>-->
+<!--                <li><a class="navbar-link" href="">Draft </a></li>-->
+<!--                 <li><a class="navbar-link" href="{% url 'accounts:logout' %}">LogOut</a></li>-->
+<!--                <li><a href="">{{user.username }}</a></li>-->
 
+<!--                {% else %}-->
+<!--                <li><a href="{% url 'accounts:register' %}">Register</a></li>-->
+<!--                <li><a class="navbar-link" href="{% url 'accounts:login' %}">Login</a></li>-->
+
+
+<!--                {% endif %}-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </nav>-->
+
+
+<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
-    fetch('http://127.0.0.1:8000/api/email/')
-  .then(response => response.json())
-  .then(data => console.log(data));
+<!--    fetch('http://127.0.0.1:8000/api/email/')-->
+<!--  .then(response => response.json())-->
+<!--  .then(data => console.log(data));-->
+
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
+  });
+
+  // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
+  // var collapsibleElem = document.querySelector('.collapsible');
+  // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+
+  // Or with jQuery
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
+
+header, main, footer {
+      padding-left: 10px;
+    }
+
+@media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 10000px;
+      }
+    }
+
+
+
 
 
 
