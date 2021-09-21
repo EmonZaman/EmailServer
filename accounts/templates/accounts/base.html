@@ -27,17 +27,21 @@
 
 
             <ul id="slide-out" class="sidenav sidenav-fixed">
+                {% if request.user.is_authenticated %}
+
                 <li>
                     <div class="user-view">
                         <div class="background card-panel #424242 #e57373 red lighten-2">
                             <!--                <div class="card-panel teal lighten-2"></div>-->
                         </div>
-                        <a href="#user"><img class="circle" src="https://thumbs.dreamstime.com/z/3d-human-character-24497120.jpg"></a>
+                        <a href="#user"><img class="circle"
+                                             src="https://thumbs.dreamstime.com/z/3d-human-character-24497120.jpg"></a>
                         <a href="#name"><span class="white-text name">{{user.username}}</span></a>
                         <a href="#email"><span class="white-text email">{{user.email}}</span></a>
                     </div>
                 </li>
-                <li><a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="material-icons">email</i>Compose</a></li>
+                <li><a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="material-icons">email</i>Compose</a>
+                </li>
 
                 <li>
                     <div class="divider"></div>
@@ -50,11 +54,18 @@
                 <li><a href="#!"><i class="material-icons">drafts</i>Draft</a></li>
 
                 <li><a href="{% url 'accounts:logout' %}"><i class="material-icons">logout</i>Logout</a></li>
-
+                {% else %}
+                <li><a href="{% url 'accounts:register' %}"><i class="material-icons">inbox</i>Register</a></li>
+                <li><a href="{% url 'accounts:login' %}"><i class="material-icons">present_to_all
+                </i>Login</a></li>
+                {% endif %}
             </ul>
 
+
         </div>
-        <div class="col-9"style="padding-left:0px !important; padding-right:0px !important;" >
+
+
+        <div class="col-9" style="padding-left:0px !important; padding-right:0px !important;">
 
             {% block body_block %}
             {% endblock %}
@@ -92,163 +103,135 @@
 <!--    </nav>-->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>-->
 <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>-->
 <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>-->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
 
-style="
+     style="
 width:30%;
 position:fixed;
-margin: auto 20px 0 auto;
-
-
-
-   ">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-
-
-
-
-
-
-       <div class="main-container">
-<div class="container1">
-
-
-    <div>
-
-
-
-        <form enctype="multipart/form-data" method="POST" action="http://127.0.0.1:8000/email/compose/">
-
-            {% csrf_token %}
-            <!--                <div>-->
-            <!--                    Sending From:-->
-            <!--                </div>-->
-            <!--                <div>-->
-            <!--                    {{ request.user.email}}-->
-            <!--                </div>-->
-
-            <!--                <div style="padding-bottom:2.5%">-->
-            <!--                    <label for="sending_to" class=" requiredField">-->
-
-
-            <!--                        <span class="asteriskField"></span> </label>-->
-            <!--                    <input type="email" name="email1" maxlength="150" autofocus=""-->
-            <!--                           class="textinput textInput form-control is-invalid" required="" id="sending_to"-->
-            <!--                           placeholder="Sending to"-->
-            <!--                    >-->
-            <!--                </div>-->
-            <!--                <div style="padding-bottom:2.5%">-->
-
-
-            <!--                    <label for="subject" class=" requiredField">-->
-            <!--                        <span class="asteriskField"></span> </label>-->
-            <!--                    <input type="text" name="subject" maxlength="150" autofocus=""-->
-            <!--                           class="textinput textInput form-control is-invalid" required="" id="subject"-->
-            <!--                           placeholder="Subject">-->
-
-            <!--                </div>-->
-
-            <!--                <div style="padding-bottom:2.5% ">-->
-
-
-            <!--                    &lt;!&ndash;                    <label for="message" class=" requiredField">&ndash;&gt;-->
-            <!--                    &lt;!&ndash;                        <span class="asteriskField"></span> </label>&ndash;&gt;-->
-            <!--                    &lt;!&ndash;                    <input type="text" name="message" autofocus=""&ndash;&gt;-->
-            <!--                    &lt;!&ndash;                           class="textinput textInput form-control is-invalid" required="" id="message"&ndash;&gt;-->
-            <!--                    &lt;!&ndash;                           placeholder="Message">&ndash;&gt;-->
-            <!--&lt;!&ndash;                    <textarea rows="5" cols="50" name="message">&ndash;&gt;-->
-
-            <!--&lt;!&ndash;Enter text here...</textarea>&ndash;&gt;-->
-
-
-            <div class="row">
-                <div class="col-25">
-
-                </div>
-                <div class="col-75">
-                    <input class="input-box" type="text" id="fname" name="email" placeholder="To">
-                </div>
+margin: auto 20px 0 auto; ">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="row">
-                <div class="col-25">
+            <div class="modal-body">
 
-                </div>
-                <div class="col-75">
-                    <input class="input-box" type="text" id="lname" name="subject" placeholder="Subject">
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-25">
+                <div class="main-container">
+                    <div class="container1">
 
-                </div>
-                <div class="col-75">
-                                <textarea class="input-box" id="message" name="message" placeholder="type you message..."
+
+                        <div>
+
+
+                            <form enctype="multipart/form-data" method="POST"
+                                  action="http://127.0.0.1:8000/email/compose/">
+
+                                {% csrf_token %}
+                                <!--                <div>-->
+                                <!--                    Sending From:-->
+                                <!--                </div>-->
+                                <!--                <div>-->
+                                <!--                    {{ request.user.email}}-->
+                                <!--                </div>-->
+
+                                <!--                <div style="padding-bottom:2.5%">-->
+                                <!--                    <label for="sending_to" class=" requiredField">-->
+
+
+                                <!--                        <span class="asteriskField"></span> </label>-->
+                                <!--                    <input type="email" name="email1" maxlength="150" autofocus=""-->
+                                <!--                           class="textinput textInput form-control is-invalid" required="" id="sending_to"-->
+                                <!--                           placeholder="Sending to"-->
+                                <!--                    >-->
+                                <!--                </div>-->
+                                <!--                <div style="padding-bottom:2.5%">-->
+
+
+                                <!--                    <label for="subject" class=" requiredField">-->
+                                <!--                        <span class="asteriskField"></span> </label>-->
+                                <!--                    <input type="text" name="subject" maxlength="150" autofocus=""-->
+                                <!--                           class="textinput textInput form-control is-invalid" required="" id="subject"-->
+                                <!--                           placeholder="Subject">-->
+
+                                <!--                </div>-->
+
+                                <!--                <div style="padding-bottom:2.5% ">-->
+
+
+                                <!--                    &lt;!&ndash;                    <label for="message" class=" requiredField">&ndash;&gt;-->
+                                <!--                    &lt;!&ndash;                        <span class="asteriskField"></span> </label>&ndash;&gt;-->
+                                <!--                    &lt;!&ndash;                    <input type="text" name="message" autofocus=""&ndash;&gt;-->
+                                <!--                    &lt;!&ndash;                           class="textinput textInput form-control is-invalid" required="" id="message"&ndash;&gt;-->
+                                <!--                    &lt;!&ndash;                           placeholder="Message">&ndash;&gt;-->
+                                <!--&lt;!&ndash;                    <textarea rows="5" cols="50" name="message">&ndash;&gt;-->
+
+                                <!--&lt;!&ndash;Enter text here...</textarea>&ndash;&gt;-->
+
+
+                                <div class="row">
+                                    <div class="col-25">
+
+                                    </div>
+                                    <div class="col-75">
+                                        <input class="input-box" type="text" id="fname" name="email" placeholder="To">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-25">
+
+                                    </div>
+                                    <div class="col-75">
+                                        <input class="input-box" type="text" id="lname" name="subject"
+                                               placeholder="Subject">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-25">
+
+                                    </div>
+                                    <div class="col-75">
+                                <textarea class="input-box" id="message" name="message"
+                                          placeholder="type you message..."
                                           style="height:200px"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <input type="submit" value="Sent">
+                                </div>
+
+
+                                <!--            <div style="padding-top:3%">-->
+                                <!--                <input type="submit" name="save" value="Sent" class="btn btn-primary btn-block mt-5"-->
+                                <!--                       id="submit-id-save">-->
+                                <!--            </div>-->
+                            </form>
+                            <hr>
+
+
+                        </div>
+                    </div>
+
                 </div>
+
+
             </div>
-            <div class="row">
-                <input type="submit" value="Sent">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
             </div>
-
-
-<!--            <div style="padding-top:3%">-->
-<!--                <input type="submit" name="save" value="Sent" class="btn btn-primary btn-block mt-5"-->
-<!--                       id="submit-id-save">-->
-<!--            </div>-->
-        </form>
-        <hr>
-
-
+        </div>
     </div>
 </div>
-
-</div>
-
-
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
 
 
 <script>
@@ -265,17 +248,20 @@ margin: auto 20px 0 auto;
 })
 
 
+
+
 </script>
 
 
-
-
-
-
-<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
@@ -306,6 +292,8 @@ header, main, footer {
         padding-left: 10000px;
       }
     }
+
+
 
 
 

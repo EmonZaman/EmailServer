@@ -4,7 +4,7 @@
 
 
 
-{% for inbox in Mails %}
+<!--{% for inbox in Mails %}-->
 
 
 <!--         <p>sender username: {{ inbox.sender_user.username}} </p>-->
@@ -25,7 +25,7 @@
 <!--</div>-->
 
 
-{% endfor %}
+<!--{% endfor %}-->
 
 
     <h2>Inbox</h2>
@@ -45,8 +45,8 @@
 
 
             <td scope="col"> <a href="{{ inbox.id}}" class="linkNoColor" >    {{ inbox.sender_user.username}}</a> </td>
-            <td scope="col"> <a href="mails/{{ inbox.id}}"  class="linkNoColor" >  {{ inbox.subject}} </a> </td>
-            <td scope="col"> <a href="mails/{{ inbox.id}}" class="linkNoColor" > {{ inbox.created_date}} </a> </td>
+            <td scope="col"> <a href="{{ inbox.id}}"  class="linkNoColor" >  {{ inbox.subject}} </a> </td>
+            <td scope="col"> <a href="{{ inbox.id}}" class="linkNoColor" > {{ inbox.created_date}} </a> </td>
 
 
         </tr>

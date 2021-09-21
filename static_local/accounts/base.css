@@ -76,7 +76,7 @@ input[type=submit]:hover {
 
 .head-title{
     padding : 1rem;
-    background : grey;
+    background : #272d36;
     margin-left : -1rem ;
     color : white ;
     font-weight : bold ;
@@ -104,3 +104,4 @@ text-decoration:none;
     color: black !important;
     text-decoration: none !important;
 }
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);

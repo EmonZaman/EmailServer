@@ -2,14 +2,22 @@
 {% load static %}
 {% block body_block %}
 
+<div class="">
+
+    <h3 class="">Message</h3>
+    <p>{{ object.receiver.username}}</p>
+    <p>{{ object.receiver.email}}</p>
 
 
-  this is <p>{{ object.subject }}</p>
+    <p>{{ object.sender_user.emai }}</p>
+    <p>{{ object.subject }}</p>
+    <p>{{ object.message}}</p>
+    <p>{{ object.sender_user.username}}</p>
+    <p>{{ object.sender_user.email}}</p>
+    <p>{{ object.created_date}}}</p>
 
 
-
-
-
+</div>
 
 
 {% endblock %}

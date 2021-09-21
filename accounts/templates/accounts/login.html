@@ -1,51 +1,112 @@
 {% extends 'accounts/base.html' %}
 {% load static %}
 {% block body_block %}
-<div class="container" style="width:60%; margin-top:15%;">
-    <div class="jumbotron">
-        <h3 class="text-center mt-0 font-weight-bold">Please Login</h3>
-        <div class="card-header text-center">
-            <p class="text-muted" style="background:#F7F7F7">Enter Your user name and password</p>
-        </div>
+<!--<div class="container" style="width:60%; margin-top:2%;">-->
+<!--    <div class="jumbotron">-->
+<!--        <h3 class="text-center mt-0 font-weight-bold">Please Login</h3>-->
+<!--        <div class="card-header text-center">-->
+<!--            <p class="text-muted" style="background:#F7F7F7">Enter Your user name and password</p>-->
+<!--        </div>-->
 
-        <div>
-
-
-            <form enctype="multipart/form-data" method="POST">
-                {% csrf_token %}
-                <div style="padding-bottom:2.5%">
-                    <label for="id_email" class=" requiredField">
+<!--        <div>-->
 
 
-                        Email<span class="asteriskField">*</span> </label>
-                    <input type="email" name="email" maxlength="150" autofocus=""
-                           class="textinput textInput form-control is-invalid" required="" id="id_email">
-                </div>
-                <div style="padding-bottom:2.5%">
+<!--            <form enctype="multipart/form-data" method="POST">-->
+<!--                {% csrf_token %}-->
+<!--                <div style="padding-bottom:2.5%">-->
+<!--                    <label for="id_email" class=" requiredField">-->
 
 
-                    <label for="id_password" class=" requiredField">
-                        Password<span class="asteriskField">*</span> </label>
-                    <input type="password" name="password" maxlength="150" autofocus=""
-                           class="textinput textInput form-control is-invalid" required="" id="id_password">
+<!--                        Email<span class="asteriskField">*</span> </label>-->
+<!--                    <input type="email" name="email" maxlength="150" autofocus=""-->
+<!--                           class="textinput textInput form-control is-invalid" required="" id="id_email">-->
+<!--                </div>-->
+<!--                <div style="padding-bottom:.5%">-->
 
-                </div>
-                <div style="padding-top:3%">
-                    <input type="submit" name="save" value="Submit" class="btn btn-primary btn-block mt-5"
-                           id="submit-id-save">
-                </div>
-            </form>
-            <hr>
-            <div class="card-footer">
-                <div class="text-center text-muted py-2">
-                    Don't have an account? <a class="text-muted ml-1" href="/register/"><b>SignUp</b></a>
+
+<!--                    <label for="id_password" class=" requiredField">-->
+<!--                        Password<span class="asteriskField">*</span> </label>-->
+<!--                    <input type="password" name="password" maxlength="150" autofocus=""-->
+<!--                           class="textinput textInput form-control is-invalid" required="" id="id_password">-->
+
+<!--                </div>-->
+<!--                <div style="padding-top:0%">-->
+<!--                    <input type="submit" name="save" value="Submit" class="btn btn-primary btn-block mt-5"-->
+<!--                           id="submit-id-save">-->
+<!--                </div>-->
+<!--            </form>-->
+<!--            <hr>-->
+<!--            <div class="card-footer">-->
+<!--                <div class="text-center text-muted py-2">-->
+<!--                    Don't have an account? <a class="text-muted ml-1" href="/register/"><b>SignUp</b></a>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container col s8" style="margin-top:5%; margin-left:10%;margin-bottom :10%; ;">
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s8 " style="text-align: center;padding-bottom: 20px;">
+                    <h3 class="brand-logo col s8">Sign In</h3>
                 </div>
             </div>
+        </nav>
 
-
-        </div>
     </div>
-</div>
+    <form class="col s12" method="POST">
+        {% csrf_token %}
+        <!--        <div class="row">-->
+        <!--            <div class="input-field hoverable col s6">-->
+        <!--                <i class="material-icons prefix">contacts</i>-->
+        <!--                <input id="first_name" type="text" class="validate">-->
+        <!--                <label for="first_name">First Name</label>-->
+        <!--            </div>-->
+        <!--            <div class="input-field hoverable col s6">-->
+        <!--                <i class="material-icons prefix">contacts</i>-->
+        <!--                <input id="last_name" type="text" class="validate">-->
+        <!--                <label for="last_name">Last Name</label>-->
+        <!--            </div>-->
+        <!--        </div>-->
 
+        <div class="row">
+            <div class="input-field hoverable col s6">
+                <i class="material-icons prefix">email</i>
+                <input id="email" type="email" name='email' class="validate">
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field hoverable col s6">
+                <i class="material-icons prefix">vpn_key</i>
+                <input id="password" type="password" name='password' class="validate">
+                <label for="password">Password</label>
+            </div>
+        </div>
+
+        <div class='row large material-icons right'>
+            <button type='submit' name='btn_login' class=' waves-effect waves-light btn right hoverable'>
+                Register
+            </button>
+        </div>
+        <!--        <a class="waves-effect waves-light btn right hoverable "><i-->
+        <!--                class="large material-icons right">done</i>register</a>-->
+    </form>
+     <div class="">
+                <div class="text-center text-muted py-2">
+                    Don't have an account?<a class="text-muted ml-1" href="/register/"><b>Login</b></a>
+                </div>
+            </div>
+       <hr>
+</div>
+<hr>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
 {% endblock %}

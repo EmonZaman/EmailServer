@@ -1,0 +1,39 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block body_block %}
+
+<div class="container" style="text-align:center">
+
+    <h3 class="">Message</h3>
+</div>
+<p>{{ object.receiver.username}}</p>
+<p>{{ object.receiver.email}}</p>
+
+
+<p>{{ object.sender_user.emai }}</p>
+<p>{{ object.subject }}</p>
+<p>{{ object.message}}</p>
+<p>{{ object.sender_user.username}}</p>
+<p>{{ object.sender_user.email}}</p>
+<p>{{ object.created_date}}}</p>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -60,3 +60,9 @@ class Sent(ListView):
 class DetailView(DetailView):
     template_name = "Email/details.html"
     model= Mail
+
+
+class SentDetail(DetailView):
+    template_name = "Email/senderdetail.html"
+    model= Mail
+
